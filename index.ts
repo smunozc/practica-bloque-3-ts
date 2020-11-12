@@ -4,3 +4,27 @@
 // Para terminar, asignad un objeto literal (sin clase) a la variable "user" (con los datos que queráis pero que no dé erroes de tipo) y luego realizad dos llamadas a "getData". La primera llamada debe recibir por parámetros el valor de la propiedad "name" del usuario y la segunda el valor de "phone".
 // OPCIONAL: Dentro de "getData" añadid un condicional con una guarda para diferenciar cuando reciba un tipo "number" y sacar por consola mensajes distintos para las dos llamadas anteriormente mencionadas.
 // Ánimo que ya lo tenéis!
+import { userData } from "./user-data";
+
+var user: userData;
+
+function getData<T>(param: T) {
+  if (isNum(param)) {
+    console.log("Numero de teléfono: " + param);
+  } else {
+    console.log("Nombre: " + param);
+  }
+}
+
+function isNum(param: any): param is number {
+  return typeof param === "number";
+}
+
+user = {
+  name: "Salvador",
+  age: 19,
+  phone: 622620594
+};
+
+getData(user.name);
+getData(user.phone);
